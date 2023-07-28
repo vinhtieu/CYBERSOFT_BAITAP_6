@@ -284,12 +284,14 @@ btnResult[6].addEventListener("click", () => {
     alert[6].classList.remove("alert-danger");
     alert[6].classList.add("alert-success");
     alert[6].innerHTML = `<p>[${numList.join(", ")}]</p>`;
-    readOnlyBai8.value = `${numList}`;
   }
 });
 
 // *Tìm Số Nguyên Tố Đầu Tiên
 btnResult[7].addEventListener("click", () => {
+
+  readOnlyBai8.value = `${numList}`;
+
   if (numList[0] === undefined) {
     alert[7].classList.remove("alert-secondary");
     alert[7].classList.add("alert-danger");
@@ -297,6 +299,8 @@ btnResult[7].addEventListener("click", () => {
   } else {
     let tempNum = 0;
     let length = numList.length;
+
+    // *Find first prime number
     for (let i = 0; i < length; i++) {
       if (isPrime(numList[i] * 1)) {
         tempNum = numList[i];
