@@ -1,3 +1,5 @@
+// *---------------- Global Variables ----------------*
+
 const input1 = document.querySelector("#input1");
 const input2 = document.querySelector("#input2");
 const inputIndex1 = document.querySelector(
@@ -14,7 +16,11 @@ const btn5RandomNum = document.querySelector("#btn10");
 const btnResult = document.querySelectorAll(".accordion-body .btn");
 const alert = document.querySelectorAll(".accordion-body .alert");
 
+// *---------------- Other Variables ----------------*
+
 let numList = [];
+
+// *---------------- Helper Functions ----------------*
 
 function isPrime(x) {
   if (x > 1 && Number.isInteger(x)) {
@@ -43,6 +49,9 @@ function deleteDup(array) {
   return array;
 }
 
+// *---------------- EventListener ----------------*
+
+// *Button for adding a number
 btnThemSo.addEventListener("click", () => {
   let inputValue = input1.value;
 
@@ -56,6 +65,7 @@ btnThemSo.addEventListener("click", () => {
   readOnlyBai8.value = `${numList}`;
 });
 
+// *Button for adding 5 numbers
 btn5RandomNum.addEventListener("click", () => {
   let chance;
   let result = 0;
@@ -88,6 +98,7 @@ btn5RandomNum.addEventListener("click", () => {
   readOnlyBai8.value = `${numList}`;
 });
 
+// *Button for clearing
 btnClear.addEventListener("click", () => {
   numList = [];
   input2.value = 0;
@@ -102,6 +113,7 @@ btnClear.addEventListener("click", () => {
   readOnlyBai8.value = ``;
 });
 
+// *Tính Tổng Số Dương
 btnResult[0].addEventListener("click", () => {
   if (numList[0] === undefined) {
     alert[0].classList.remove("alert-secondary");
@@ -122,6 +134,7 @@ btnResult[0].addEventListener("click", () => {
   }
 });
 
+// *Đếm Số Dương
 btnResult[1].addEventListener("click", () => {
   if (numList[0] === undefined) {
     alert[1].classList.remove("alert-secondary");
@@ -141,6 +154,7 @@ btnResult[1].addEventListener("click", () => {
   }
 });
 
+// *Tìm Số Nhỏ Nhất
 btnResult[2].addEventListener("click", () => {
   if (numList[0] === undefined) {
     alert[2].classList.remove("alert-secondary");
@@ -161,6 +175,7 @@ btnResult[2].addEventListener("click", () => {
   }
 });
 
+// *Tìm Số Dương Nhỏ Nhất
 btnResult[3].addEventListener("click", () => {
   if (numList[0] === undefined) {
     alert[3].classList.remove("alert-secondary");
@@ -169,6 +184,8 @@ btnResult[3].addEventListener("click", () => {
   } else {
     let smallestPosNum = Infinity;
     let length = numList.length;
+
+    // *Find the smallest positive number
     for (let i = 0; i < length; i++) {
       if (smallestPosNum > numList[i] && numList[i] > 0) {
         smallestPosNum = numList[i];
@@ -187,6 +204,7 @@ btnResult[3].addEventListener("click", () => {
   }
 });
 
+// *Tìm Số Chẵn Cuối Cùng
 btnResult[4].addEventListener("click", () => {
   if (numList[0] === undefined) {
     alert[4].classList.remove("alert-secondary");
@@ -195,6 +213,8 @@ btnResult[4].addEventListener("click", () => {
   } else {
     let evenNum = 0;
     let length = numList.length;
+
+    // *Find prime number by looping
     for (let i = length - 1; i >= 0; i--) {
       if (numList[i] % 2 === 0) {
         evenNum = numList[i];
@@ -214,6 +234,7 @@ btnResult[4].addEventListener("click", () => {
   }
 });
 
+// *Đổi Chỗ
 btnResult[5].addEventListener("click", () => {
   if (numList[0] === undefined) {
     alert[5].classList.remove("alert-secondary");
@@ -223,6 +244,8 @@ btnResult[5].addEventListener("click", () => {
     let value1 = inputIndex1.value * 1;
     let value2 = inputIndex2.value * 1;
     let tempNum = 0;
+
+    // *Swap value
     tempNum = numList[value1];
     numList[value1] = numList[value2];
     numList[value2] = tempNum;
@@ -239,6 +262,7 @@ btnResult[5].addEventListener("click", () => {
   }
 });
 
+// *Sắp Xếp Theo Thứ Tự Tăng Dần
 btnResult[6].addEventListener("click", () => {
   if (numList[0] === undefined) {
     alert[6].classList.remove("alert-secondary");
@@ -264,6 +288,7 @@ btnResult[6].addEventListener("click", () => {
   }
 });
 
+// *Tìm Số Nguyên Tố Đầu Tiên
 btnResult[7].addEventListener("click", () => {
   if (numList[0] === undefined) {
     alert[7].classList.remove("alert-secondary");
@@ -291,6 +316,7 @@ btnResult[7].addEventListener("click", () => {
   }
 });
 
+// *Đếm Số Nguyên
 btnResult[8].addEventListener("click", () => {
   if (numList[0] === undefined) {
     alert[8].classList.remove("alert-secondary");
@@ -301,21 +327,16 @@ btnResult[8].addEventListener("click", () => {
     let length = numList.length;
     for (let i = 0; i < length; i++) {
       if (Number.isInteger(numList[i] * 1)) {
-        console.log(
-          "🚀 ~ file: main.js:312 ~ btnResult[8].addEventListener ~ Số Nguyên:",
-          numList[i] * 1
-        );
-
         tempNum++;
       }
     }
-
     alert[8].classList.remove("alert-danger");
     alert[8].classList.add("alert-success");
     alert[8].innerHTML = `<p>Có <strong style="color: darkgreen">${tempNum}</strong> Nguyên Trong Mảng</p>`;
   }
 });
 
+// *So Sánh Số Dương và Số Âm
 btnResult[9].addEventListener("click", () => {
   if (numList[0] === undefined) {
     alert[9].classList.remove("alert-secondary");
